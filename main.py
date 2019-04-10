@@ -10,8 +10,6 @@ def startLearning():
         state = rLearn.initState()
         trajectoryCount = 0
         while True:
-            if rLearn.isATerminal(state):
-                print("error")
             action = rLearn.eGreedy(state)
             nextState = rLearn.simulateMove(state, action)
             rLearn.qLearningUpdate(state, action, nextState)
@@ -22,10 +20,8 @@ def startLearning():
             state = nextState
             trajectoryCount += 1
 
-        if(trial == 999 or trial == 9999):
+        if(trial == 100 or trial == 1000):
                 rLearn.printQValues()
-
-    
 
 if __name__ == "__main__":
     startLearning()

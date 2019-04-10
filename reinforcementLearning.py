@@ -186,9 +186,9 @@ class ReinforcementLearning():
        
         freqAccessState.setValue(action, str(int(freqAccessState.getValue(action)) + 1))
         #Q-learning Function
-        qValue = str(round(1 / int(freqAccessState.getValue(action)) * 
-                (self.rewards[action] + self.discountRate * (nextState.getMaxAction()) - float(qValueState.getValue(action))), 1))
-        qValueState.setValue(action, qValue)
+        qValue = round(float(qValueState.getValue(action)) + (1 / int(freqAccessState.getValue(action)) * 
+                (self.rewards[action] + self.discountRate * (nextState.getMaxAction()) - float(qValueState.getValue(action)))), 1)
+        qValueState.setValue(action, str(qValue))
         
 
     def sasaLearningUpdate(self, s, ss):
